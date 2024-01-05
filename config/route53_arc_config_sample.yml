@@ -1,0 +1,36 @@
+account: "1234"
+appName: "test"
+primary: "<primary region>"
+secondary: "<secondary_region>"
+primaryStepfunctionArn: "<Primary DR Automation Stepfunction arn>"
+secondaryStepfunctionArn: "<Secondary DR Automation Stepfunction arn>"
+
+arcCluster:
+  clusterName: "primarykey"
+  endpoints:
+    - region: "r1"
+      arn: "a1"
+    - region: "r2"
+      arn: "a2"
+    - region: "r3"
+      arn: "a3"
+    - region: "r4"
+      arn: "a4"
+    - region: "r5"
+      arn: "a6"
+  controlPanel:
+    controlPanelArn: "zeit1"
+    failoverRoutingControls:
+      primary:
+        - r1
+        - r2
+      secondary:
+        - s1
+        - s2
+    failbackRoutingControls:
+      primary:
+        - r2
+        - r1
+      secondary:
+        - s2
+        - s2
