@@ -64,18 +64,24 @@ All the fields in the above-mentioned configuration file are mandatory and failu
 
 > **_NOTE:_**  Sample files in [Config Dir](./config) are provided as an example templates, please make sure values are appropriately modified before it is used
 # How to deploy
-After you have modified app.yml according to your needs, you can deploy the stack using the following commands
+After you have modified rds_failover_config_sample.yml and route53_arc_config_sample.yml in [Config Dir](./config) according to your needs, you can deploy the stacks using the following commands
 
-* `cdk bootstrap -c config=app --all`   Provision resources for AWS CDK
-* `cdk deploy -c config=app --all`   Deploy the stack based on values present in "app.yml" which is placed under [config](./config) directory
+```Shell
+export AWS_DEFAULT_REGION=us-east-1 && cdk deploy -c rdsConfig=rds_failover_config RdsFailoverStackPrimary #Deploys RDS failover stack in primary region
 
-If you wish to use a different file name, make sure that the file is placed under [config](./config) directory and the name of the file
-is used in the deploy command as below
+export AWS_DEFAULT_REGION=us-west-2 && cdk deploy -c rdsConfig=rds_failover_config RdsFailoverStackSecondary #Deploys RDS failover stack in secondary region
 
-* `cdk deploy -c config=new_config --all`   Deploy the stack based on values present in "new_config.yml" which is placed under [config](./config) directory
+export AWS_DEFAULT_REGION=us-east-1 && cdk deploy -c config=route53_arc_config DrStackPrimary #Deploys Failover and Failback step function in primary region
+
+export AWS_DEFAULT_REGION=us-west-2 && cdk deploy -c config=route53_arc_config DrStackSecondary #Deploys Failover and Failback step function in secondary region
+``` 
+
 
 # How to destroy
 
-You can destroy the entire stack using the command
+You can destroy the entire stack in both regions using these commands
 
-* `cdk destroy -c config=app --all` Destroy the stack based on values present in "app.yml" which is placed under [config](./config) directory
+```Shell
+export AWS_DEFAULT_REGION=us-east-1 && cdk destroy -c rdsConfig=rds_failover_config --all && #Destroys entire all stacks in primary region
+export AWS_DEFAULT_REGION=us-west-2 && cdk destroy -c rdsConfig=route53_arc_config --all && #Destroys entire all stacks in secondary region
+```
