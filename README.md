@@ -13,7 +13,7 @@ This state machine, which when supplied with relevant configuration about primar
 Configuration information about ARC, Cluster Endpoints and Routing Controls are stored in a couple of DynamoDB Tables.
 
 ## Configuration
-For the sake of convenience, the repository uses two configuration file ([rds_failover_config_sample](./config/rds_failover_config_sample.yml) and [route53_arc_config_sample](./config/route53_arc_config_sample.yml)) which is used to configure 
+This repository uses two configuration file ([rds_failover_config_sample](./config/rds_failover_config_sample.yml) and [route53_arc_config_sample](./config/route53_arc_config_sample.yml)) which is used to configure 
 the [RDS Failover Stack](./lib/rds-failover-stack.ts) and [DynamoDB Setup Stack](./lib/dd-setup-stack.ts). The configuration files which are in yaml format looks like below
 
 ### RDS Failover Configuration File
@@ -82,6 +82,8 @@ export AWS_DEFAULT_REGION=us-west-2 && cdk deploy -c config=route53_arc_config D
 You can destroy the entire stack in both regions using these commands
 
 ```Shell
-export AWS_DEFAULT_REGION=us-east-1 && cdk destroy -c rdsConfig=rds_failover_config --all && #Destroys entire all stacks in primary region
-export AWS_DEFAULT_REGION=us-west-2 && cdk destroy -c rdsConfig=route53_arc_config --all && #Destroys entire all stacks in secondary region
+export AWS_DEFAULT_REGION=us-east-1 && cdk destroy -c rdsConfig=rds_failover_config --all && #Destroys entire RDS stack in primary region
+export AWS_DEFAULT_REGION=us-west-2 && cdk destroy -c rdsConfig=rds_failover_config --all && #Destroys entire RDS stack in secondary region
+export AWS_DEFAULT_REGION=us-east-1 && cdk destroy -c config=route53_arc_config --all && #Destroys entire Route53 ARC stack in primary region
+export AWS_DEFAULT_REGION=us-west-2 && cdk destroy -c config=route53_arc_config --all && #Destroys entire Route53 ARC stack in secondary region
 ```
