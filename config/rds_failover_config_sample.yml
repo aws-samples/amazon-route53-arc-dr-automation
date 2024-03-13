@@ -1,0 +1,4 @@
+account: "<Account no>"
+primary: "<primary region>"
+secondary: "<secondary_region>"
+globalClusterIdentifier: "<global cluster name>"
