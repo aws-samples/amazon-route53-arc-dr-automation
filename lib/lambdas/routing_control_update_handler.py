@@ -40,7 +40,8 @@ def get_routing_control_state(routing_control_arn, cluster_endpoints):
                 RoutingControlArn=routing_control_arn)
             return response
         except Exception as error:
-            raise error
+             print (error)
+    raise Exception ("Couldn't get Routing Control states")
 
 
 def update_routing_control_state(
@@ -67,7 +68,8 @@ def update_routing_control_state(
                 RoutingControlState=routing_control_state)
             return response
         except Exception as error:
-            raise error
+            print (error)
+    raise Exception ("Couldn't update Routing Control states")
 
 
 def list_routing_controls_arns(control_plane_arn, cluster_endpoints):
@@ -80,7 +82,8 @@ def list_routing_controls_arns(control_plane_arn, cluster_endpoints):
             )
             return response['RoutingControls']
         except Exception as error:
-            raise error
+            print (error)
+    raise Exception ("Couldn't list Routing Control ARNs")
 
 
 def retrieve_config_dynamodb_table(table, pk):
