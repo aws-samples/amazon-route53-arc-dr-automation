@@ -13,14 +13,12 @@
     "lint:fix": "eslint --fix ."
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.119",
     "@types/jest": "^27.5.2",
     "@types/js-yaml": "^4.0.7",
-    "@types/node": "10.17.27",
+    "@types/node": "18.19.26",
     "@types/prettier": "2.6.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
-    "aws-cdk": "2.46.0",
     "eslint": "8.46.0",
     "eslint-config-prettier": "8.10.0",
     "eslint-plugin-prettier": "4.2.1",
@@ -32,11 +30,8 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-lambda": "^1.204.0",
-    "@aws-sdk/client-iam": "^3.379.1",
-    "aws-cdk-lib": "2.46.0",
-    "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1424.0",
+    "aws-cdk-lib": "2.133.0",
+    "aws-sdk": "2.1586.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
   }

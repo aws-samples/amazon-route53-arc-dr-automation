@@ -1,7 +1,7 @@
 import {CfnOutput, Duration, StackProps} from "aws-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 import {Construct} from "constructs";
-import { Runtime} from "@aws-cdk/aws-lambda";
+import { Runtime} from "aws-cdk-lib/aws-lambda";
 import {Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import {LambdaInvoke} from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { StateMachine, TaskInput} from "aws-cdk-lib/aws-stepfunctions";
